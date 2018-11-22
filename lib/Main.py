@@ -1,10 +1,6 @@
 from lib.ExampleReader import ExampleReader
 from lib.Evaluator import Evaluator
-# import lib.model as m
-# import lib.recurrent_attention_model as m
 import lib.Model as m
-# import lib.test as m
-import numpy as np
 import h5py
 
 
