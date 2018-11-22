@@ -5,8 +5,8 @@ from keras.preprocessing.sequence import pad_sequences
 class ExampleReader:
 
     def __init__(self):
-        self.dir = "../data/"
-        self.max_sentence_length = 78
+        self.dir = "../laptop_data/"
+        self.max_sentence_length = 82
         self.EMBEDDING_DIM = 300
 
     def load_position_matrix(self):
@@ -285,8 +285,8 @@ if __name__ == '__main__':
     #                                                  aspect_index=aspect_index, embedding_matrix=embedding_matrix)
     # aspect_embeddings = np.array(aspect_embeddings, dtype='float32')
     print("==========================================")
-    train_aspects = example_reader.pad_aspect_index(train_aspect_text_inputs.tolist(), max_length=22)
-    test_aspects = example_reader.pad_aspect_index(test_aspect_text_inputs.tolist(), max_length=22)
+    train_aspects = example_reader.pad_aspect_index(train_aspect_text_inputs.tolist(), max_length=9)
+    test_aspects = example_reader.pad_aspect_index(test_aspect_text_inputs.tolist(), max_length=9)
     # print(str(train_aspect_text_inputs[1]))
     # print(str(train_aspect_text_inputs[2]))
     print(np.shape(train_aspects))
