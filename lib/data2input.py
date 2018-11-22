@@ -52,6 +52,8 @@ class data2input(object):
         aspect_text_index_file = self.dir + name + "_aspects_text_index.txt"
         aspect_text_input_file = self.dir + name + "_aspects_text_input.txt"
 
+        aspect_max_length = -1
+
         aspect_texts = []
         rf = open(aspect_text_file, 'r')
         wf = open(aspect_text_input_file, 'w')
@@ -79,12 +81,16 @@ class data2input(object):
             line = line.strip()
             line = line.strip('.')
             line = line.strip()
+            temp = line.count(' ') + 1
+            if temp > aspect_max_length:
+                aspect_max_length = temp
             wf.write(line + "\n")
             aspect_texts.append(line)
         rf.close()
         wf.close()
         aspect_texts = tk.texts_to_sequences(aspect_texts)
         self.write_index_to_file(inputs=aspect_texts, file=aspect_text_index_file)
+        print("max length of aspect is " + str(aspect_max_length))
         return aspect_texts
 
     def convert_aspect_to_label(self, name='', class_ids={}, sentences=[]):
