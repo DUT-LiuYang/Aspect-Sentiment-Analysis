@@ -1,9 +1,7 @@
 import h5py
 from lib.ExampleReader import ExampleReader
 from lib.Evaluator import Evaluator
-# import lib.recurrent_attention_model as m
-# import lib.test as m
-import lib.model_aspect as m
+import lib.Model as m
 from keras.models import Model
 import numpy as np
 
