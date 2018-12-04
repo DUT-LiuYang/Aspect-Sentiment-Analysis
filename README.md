@@ -1,12 +1,19 @@
 # Aspect-Sentiment-Analysis
-We will upload our source code for our paper in CONLL 2018 soon.
-
+## 运行方法
 1. 运行xml2text.py, 读取xml文件。
 2. 运行data2inputs.py, 将数据转化为网络可用输入。在这之前，我使用分词工具对文本进行了分词。
 3. 运行EmbeddingWriter.py, 生成必要的embedding矩阵。
-4. 训练模型，可以使用ExampleReader.py读取数据，示例见该文件。
+4. 训练模型，可以参考使用Main.py
 
-整个模型的训练和read model类似，我们也提供了一个Main文件，方便运行各个模块。
+训练好自己的模型之后，可以用read_model.py加载训练好的模型，可以输出中间层attention的结果。
+## 常见问题
+1. 模型运行时，embedding层会报错，权重矩阵大小与定义大小不匹配等
+模型存在句子最大长度、aspect最大长度、embedding词表大小几个参数，这几个参数需要根据预处理的结果指定。出现上述的错误有两种可能：
+(1) laptop和restaurant之间的参数不同; (2) 我在预处理中做了分词，我们跑出的词表大小可能不同(为了节约存储空间，我只加载用到的词向量，所以根据词表裁减了词向量文件)，因此我们embedding层的参数也会不同。
+
+    laptop_data文件夹中提供了laptop数据集的分词结果，基于这几个文件运行data2input.py等后续程序，不需要改动程序里的参数。
+
+    为了方便使用，后续我会把参数改为动态写入，这样就不必困扰于我给定的参数了。
 
 训练好的模型会存在models文件夹下，预测的结果以及预测错误会报错在results文件夹。
 
@@ -14,3 +21,5 @@ We will upload our source code for our paper in CONLL 2018 soon.
 
 这个任务仍有很多挑战，比如对于复杂句子（一句话存在相反的情感、双重否定）的识别效果并不理想。
 我们也会持续关注最新进展。
+
+如果在实验代码的过程中发现了问题，欢迎与我们联系。
