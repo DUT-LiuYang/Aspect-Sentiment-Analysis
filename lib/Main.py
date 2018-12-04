@@ -28,8 +28,8 @@ if __name__ == '__main__':
     # ---------------------------------------------------------------------
 
     for i in range(5):
-        model = m.build_model(max_len=82,
-                              aspect_max_len=9,
+        model = m.build_model(max_len=82,           # 78 82
+                              aspect_max_len=9,     # 22 9
                               embedding_matrix=embedding_matrix,
                               position_embedding_matrix=position_matrix,
                               class_num=3,
